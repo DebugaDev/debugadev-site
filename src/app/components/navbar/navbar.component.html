@@ -1,0 +1,32 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="navbar-content">
+    <div class="navbar-left">
+      <a href="home">
+        <img src="../../../assets/debugadev_logo_fundo_257x258.png" alt="Logo Debuga Dev" class="logo" />
+      </a>
+      <a href="home">
+        <span class="channel-name">Debuga Dev</span>
+      </a>
+    </div>
+    <button class="menu-toggle" (click)="toggleMenu()" [class.rotate]="menuRotateClass">
+      <img [src]="menuIcon" alt="Menu" />
+    </button>
+    <ul class="navbar-right" [class.show]="menuOpen">
+      <li>
+        <a href="https://www.youtube.com/@DebugaDev" target="_blank" title="Debuga Dev YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/debugadev" target="_blank" title="Debuga Dev Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+      <li><a href="home" (click)="closeMenu()">Página Inicial</a></li>
+      <li><a href="videos" (click)="closeMenu()">Vídeos</a></li>
+      <li><a href="blog" (click)="closeMenu()">Blog</a></li>
+      <li><a href="quem-somos" (click)="closeMenu()">Quem Somos</a></li>
+      <li><a href="contato" (click)="closeMenu()">Contatos</a></li>
+    </ul>
+  </div>
+</nav>
