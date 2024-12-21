@@ -12,24 +12,19 @@ import { BlogComponent } from "../blog/blog.component";
 export class BlogsComponent {
   blogs: Blog[] = [
     {
-      imagem: 'https://via.placeholder.com/350x150',
-      titulo: 'Como começar com Angular',
-      link: 'https://angular.io/start',
+      imagem: '../../../assets/programacao-java.jpg',
+      titulo: 'Algumas coisas sobre Java — I',
+      link: 'algumas-coisas-sobre-java-1',
     },
     {
-      imagem: 'https://via.placeholder.com/350x150',
-      titulo: 'Introdução ao TypeScript',
-      link: 'https://www.typescriptlang.org/docs/',
+      imagem: '../../../assets/programacao-java.jpg',
+      titulo: 'Algumas coisas sobre Java — II',
+      link: 'algumas-coisas-sobre-java-2',
     },
     {
-      imagem: 'https://via.placeholder.com/350x150',
-      titulo: 'Melhores práticas em desenvolvimento web',
-      link: 'https://developer.mozilla.org/en-US/',
-    },
-    {
-      imagem: 'https://via.placeholder.com/350x150',
-      titulo: 'Quick Start React',
-      link: 'https://react.dev/learn',
-    },
+      imagem: '../../../assets/logback.jpg',
+      titulo: 'Criando log em aplicações Spring Boot',
+      link: 'criando-log-em-aplicacoes-spring-boot'
+    }
   ];
 }

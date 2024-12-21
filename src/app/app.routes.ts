@@ -8,7 +8,7 @@ import { TermosUsoComponent } from './components/termos-uso/termos-uso.component
 import { BlogsComponent } from './components/blogs/blogs.component';
 import { AlgumasCoisasSobreJava1Component } from './tutorials/algumas-coisas-sobre-java-1/algumas-coisas-sobre-java-1.component';
 import { AlgumasCoisasSobreJava2Component } from './tutorials/algumas-coisas-sobre-java-2/algumas-coisas-sobre-java-2.component';
-import { CriandoLogEmaaplicacoesSpringBootComponent } from './tutorials/criando-log-emaaplicacoes-spring-boot/criando-log-emaaplicacoes-spring-boot.component';
+import { CriandoLogEmAplicacoesSpringBootComponent } from './tutorials/criando-log-em-aplicacoes-spring-boot/criando-log-em-aplicacoes-spring-boot.component';
 
 export const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -21,5 +21,5 @@ export const routes: Routes = [
   { path: "termos-uso", component: TermosUsoComponent },
   { path: "algumas-coisas-sobre-java-1", component: AlgumasCoisasSobreJava1Component },
   { path: "algumas-coisas-sobre-java-2", component: AlgumasCoisasSobreJava2Component },
-  { path: "criando-log-emaaplicacoes-spring-boot", component: CriandoLogEmaaplicacoesSpringBootComponent }
+  { path: "criando-log-em-aplicacoes-spring-boot", component: CriandoLogEmAplicacoesSpringBootComponent }
 ];
