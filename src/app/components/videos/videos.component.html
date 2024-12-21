@@ -1,0 +1,13 @@
+<div class="page-view">
+  <h1>Vídeos do Canal</h1>
+  <hr>
+  <div class="list-video">
+    @for (video of listVideo; track video) {
+      <app-video
+        titulo={{video.titulo}}
+        subtitulo={{video.subtitulo}}
+        url={{video.url}}
+      />
+    }
+  </div>
+</div>
