@@ -1,0 +1,82 @@
+<section class="tutorial">
+  <h1>Algumas coisas sobre Java — II</h1>
+
+  <p>
+    Dando continuação aos meus estudos, escrevi mais um pouco sobre coisas básicas. A ideia agora é entender um pouco sobre os tipos de dados em Java.
+  </p>
+  <p>
+    As linguagens de programação permitem a criação de variáveis para manipular informações, exemplo: posso guardar a idade de uma pessoa em uma variável do tipo inteiro ou o valor de venda de um produto em uma variável do tipo double.
+  </p>
+  <p>
+    Em Java, quando precisamos de uma nova variável se torna necessário declará-la. A declaração deve informar o o TIPO e o NOME dessa variável. Já ouviu falar em “fortemente tipada”? É por isso, todas as variáveis devem ter seu tipo definido na declaração.
+  </p>
+  <p>
+    Exemplo de declaração:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        public int idade;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    Também é importante falar que em Java a inicialização das variáveis é obrigatória e pode ocorrer de duas maneiras: explicitamente e implicitamente.
+  </p>
+  <p>
+    Variáveis locais devem ser inicializadas de maneira explícita antes de serem utilizadas, exemplo:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        public void fazAlgo() &#123;
+          int idade = 25;
+          System.out.println(idade);
+          return hello;
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    O fato aqui é que a variável tem que ser inicializada antes de seu uso, isso pode ocorrer de outras maneiras, mas caso não seja inicializada ocorre um erro de compilação. E se a variável for atributo de uma classe? Ela é inicializada de maneira implícita junto com o objeto da classe com valor padrão.
+  </p>
+  <p>
+    Exemplos de valores padrão:
+  </p>
+  <ul>
+    <li><strong>Inteiros:</strong> 0</li>
+    <li><strong>Ponto flutuante:</strong> 0.0</li>
+    <li><strong>Boolean:</strong> false</li>
+    <li><strong>Char:</strong> vazio, equivalente a 0</li>
+    <li><strong>Referências:</strong> null</li>
+  </ul>
+
+  <h2>Tipos Primitivos</h2>
+  <p>
+    No Java todos os tipos primitivos já estão definidos, não sendo possível criar novos tipos primitivos. Os tipos primitivos são: <strong>byte, short, char, int, long, float, double e boolean</strong>.
+  </p>
+  <p>
+    Pontos legais de se saber:
+  </p>
+  <ul>
+    <li>boolean é o único não numérico</li>
+    <li>float e double são pontos flutuantes</li>
+    <li>os demais são inteiros</li>
+    <li>Os números de ponto flutuante podem assumir os seguintes valores: +/- infinity, +/- 0, NaN (Not a Number)</li>
+  </ul>
+
+  <h2>Tipos e seus tamanhos</h2>
+  <ul>
+    <li>byte 1 byte (8 bits, de -128 a 127)</li>
+    <li>short 2 bytes (16 bits, de –32.768 a 32.767)</li>
+    <li>har 2 bytes (só positivo),(16 bits, de 0 a 65.535)</li>
+    <li>int 4 bytes (32bits, de –2.147.483.648 a 2.147.483.647)</li>
+    <li>long 8 bytes (64 bits, de –9.223.372.036.854.775.808 a 9.223.372.036.854.775.807)</li>
+    <li>float 4 bytes (32bits, de +/– 1.4 * 1⁰⁴⁵ a +/– 3.4028235 * 1⁰³⁸)</li>
+  </ul>
+
+</section>
