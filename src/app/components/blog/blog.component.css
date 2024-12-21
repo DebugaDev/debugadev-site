@@ -1,12 +1,51 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 80rem;
-
-  margin-left: 4rem;
-  margin-right: 4rem;
+.frame-blog {
+  width: 100%;
+  max-width: 35rem;
+  border: solid 0.12em grey;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.50);
+  border-radius: 0.7rem;
+  margin: 2rem auto;
+  transition: transform 0.5s ease;
+  background-color: #fff;
 }
 
-.content {
-  flex: 1;
+.frame-blog:hover {
+  transform: scale(1.05);
+}
+
+.frame-blog a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.imagem img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+}
+
+.texto {
+  text-align: center;
+  padding: 1rem;
+}
+
+.texto h1 {
+  font-family: 'Grenze', sans-serif;
+  font-size: clamp(0.7rem, 3.5vw, 1.5rem);
+  font-weight: normal;
+  color: rgb(63, 105, 105);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .frame-blog {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .texto h1 {
+    font-size: clamp(0.8rem, 3vw, 1.2rem);
+  }
 }
