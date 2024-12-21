@@ -1,0 +1,162 @@
+<section class="tutorial">
+  <h1>Criando log em aplicações Spring Boot</h1>
+
+  <p>
+    Uma coisa importante sempre que temos programas em produção é a criação de logs para que seja possível verificar o comportamento desse programa. Isso é necessário pelo simples fato de não ser possível disponibilizar o ambiente de produção para que o analista entenda o que está acontecendo ou faça a análise de um problema específico. Esse ambiente está sendo utilizado por pessoas e/ou outras aplicações.
+  </p>
+  <p>
+    Por isso aquela famosa frase “cadê o log?”.
+  </p>
+  <p>
+    Mas o que é o log?
+  </p>
+  <p>
+    “Log de dados é um arquivo de texto gerado por um software para descrever eventos sobre o seu funcionamento, utilização por usuários ou interação com outros sistemas.” Fonte: Google.
+  </p>
+  <p>
+    Vou configurar a geração de log em uma API feita com spring boot versão 2.2.2. É bem simples, não precisa importar nada via pom.xml. Isso porque o spring boot já possui o slf4j como dependência.
+  </p>
+  <p>
+    O uso é bem simples, vou começar pela classe que inicia a api, nesse caso é a DemoApplication. Nela vou criar uma instância de logger e adicionar conteúdo ao arquivo de log, segue exemplo:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        import javax.jms.JMSException;
+        import javax.naming.NamingException;
+
+        import org.slf4j.Logger;
+        import org.slf4j.LoggerFactory;
+        import org.springframework.boot.SpringApplication;
+        import org.springframework.autoconfigure.SpringBootApplication;
+        import org.springframework.scheduling.annotation.EnableScheduling;
+
+        &#64;EnableScheduling
+        &#64;SpringBootApplication
+        piblic class DemoApplication &#123;
+          private static Logger logger = LoggerFactory.getLogger(DemoApplication.class);
+
+          public static void main(String[] args) &#123;
+            logger.info("Iniciando a API de cadastro de pessoas");
+            SpringApplication.run(DemoApplication.class, args);
+            logger.info("API de cadastro de pessoas iniciada e pronta para receber requisições");
+          &#125;
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    Essa é a sintaxe para criar o objeto de logger, colocar informações no log e os imports necessários. Daqui pra frente é só fazer de uma maneira semelhante a essa, podendo utilizar também o tipo debug e error que o logger disponibiliza.
+  </p>
+  <p>
+    Vou colocar mais um exemplo de como tratar e informar no log o conteúdo de uma exceção:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        &#64;RequestMapping(path = "/person")
+        piblic class PersonResource &#123;
+
+          private static Logger logger = LoggerFactory.getLogger(PersonResource.class);
+
+          private PersonRepository personRepository;
+
+          public PersonResource(PersonRepository personRepository) &#123;
+            this.personRepository = personRepository;
+          &#125;
+
+          &#123;...&#125;
+          public ResponseEntity&#60;Person&#62; save(&#64;RequestBody Person person) &#123;...&#125;
+
+          &#123;...&#125;
+          public ResponseEntity&#60;List&#60;Person&#62;&#62; getAll() &#123;...&#125;
+
+          &#64;ApiOperation("Constulta pessoa pelo id.")
+          &#64;GetMapping(path = "/&#123;id &#125;")
+          public ResponseEntity&#60;Optional&#60;Person&#62;&#62; getById(&#64;PathVariable Integer id) &#123;
+
+            Optional&#60;Person&#62; person;
+            try &#123;
+              person = personRepository.findById(id);
+              logger.info("Pessoa com id: " + id + " encontrada");
+              return new ResponseEntity&#60;Optional&#60;Person&#62;&#62;(person, HttpStatus.OK);
+            &#125; cath(NoSuchElementException) &#123;
+              logger.info("Pessoa com id: " + id + " não encontrada");
+              return new ResponseEntity&#60;Optional&#60;Person&#62;&#62;(HttpStatus.NOT_FOUND);
+            &#125;
+          &#125;
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    No exemplo acima ocorreria uma exceção do tipo NoSuchElementException caso um id de uma pessoa que não existisse fosse utilizado como parâmetro de busca. Mas o try&#123;&#125; catch&#123;&#125; tratou essa possível exceção e o logger informa em caso de sucesso e em caso de não encontrado.
+  </p>
+  <p>
+    Beleza, agora que no código já coloquei o que era necessário para colocar informações no log, tem mais um ponto: um arquivo que configura a criação, tamanho, local, rotação etc. Nesse caso usei o logback.xml e aqui está o exemplo:
+  </p>
+  <pre>
+    <code class="language-xml">
+      <p>
+        lockback.xml -> Nome do arquivo
+
+        &#60;configuration&#62;
+          &#60;property name="LOG_DIR" value="logs/api-sb.log"/&#62;
+          &#60;appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender"&#62;
+            &#60;file&#62;$(LOG_DIR)&#60;/file&#62;
+            &#60;rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBaseRollingPolicy"&#62;
+              &#60;fileNamePattern&#62;logs/archived/api-sb.%d&#123;yyy-MM-dd&#125;.%i.log.gz&#60;/fileNamePattern&#62;
+              &#60;maxFileSize&#62;5MB&#60;/maxFileSize&#62;
+              &#60;totalSizeCap&#62;1GB&#60;/totalSizeCap&#62;
+              &#60;maxHistory&#62;60&#60;/maxHistory&#62;
+            &#60;/rollingPolicy&#62;
+            &#60;encoder&#62;
+              &#60;pattern&#62;%d %p %c&#123;1.&#125; [%t] %m%n&#60;/pattern&#62;
+            &#60;/encoder&#62;
+          &#60;/appender&#62;
+
+          &#60;logger name="com.example.demo" level="debug" additivity="false"&#62;
+            &#60;appender-ref ref="FILE-ROLLING"/&#62;
+          &#60;/logger&#62;
+          &#60;root level="info"&#62;
+            &#60;appender-ref ref="FILE-ROLLING"/&#62;
+          &#60;/root&#62;
+        &#60;/configuration&#62;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    Esse arquivo deve ser colocado dentro de “resources”, mesmo local onde está o application.properties. Agora é só iniciar o projeto e verificar que no diretório do projeto foi criada uma pasta “logs” e dentro há um arquivo api-sb.log.
+  </p>
+  <p>
+    Esse nome pode ser trocado por qualquer outro de sua preferência.
+  </p>
+  <p>
+    Abrindo o arquivo de log, vou chamar atenção para dois pontos:
+  </p>
+  <p>
+    <img src="../../../assets/execption.webp" alt="execption" class="img" />
+  </p>
+
+  <h2></h2>
+  <p>
+    Esse é o conteúdo que coloquei na classe DemoApplication.
+  </p>
+
+  <h2></h2>
+  <p>
+    Legal, né?
+  </p>
+
+  <h2></h2>
+  <p>
+    <img src="../../../assets/boom.gif" alt="boom" class="gif" />
+  </p>
+
+</section>
