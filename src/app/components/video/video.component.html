@@ -1,0 +1,22 @@
+<div class="frame-video">
+  <div class="video">
+    <iframe
+      [src]="url | safe"
+      width="560"
+      height="315"
+      [title]="titulo"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div class="texto">
+    <div class="titulo-video">
+      <h1>{{ titulo.toUpperCase() }}</h1>
+    </div>
+    <hr>
+    <div class="subtitulo-video">
+      <h1>{{ subtitulo }}</h1>
+    </div>
+  </div>
+</div>
