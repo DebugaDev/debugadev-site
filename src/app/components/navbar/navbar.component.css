@@ -59,7 +59,7 @@
 .navbar-right li a {
   text-decoration: none;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   padding-bottom: 5px;
   transition: color 0.4s ease, padding-bottom 0.3s ease;
 }
