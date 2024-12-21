@@ -1,0 +1,14 @@
+<div class="page-view">
+  <h1>Blogs do Canal</h1>
+  <hr>
+  <div class="list-blog">
+    @for (blog of blogs; track blog) {
+      <app-blog
+        imagem={{blog.imagem}}
+        titulo={{blog.titulo}}
+        link={{blog.link}}
+      />
+    }
+  </div>
+</div>
+

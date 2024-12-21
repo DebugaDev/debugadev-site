@@ -1,0 +1,30 @@
+.page-view {
+  padding: 0 4%;
+}
+
+.page-view h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  color: rgb(63, 105, 105);
+  margin-top: 1rem;
+}
+
+.list-blog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas por padrão */
+  gap: 1.5rem; /* Espaçamento entre os vídeos */
+  justify-content: center;
+  align-items: baseline;
+}
+
+@media (max-width: 1750px) {
+  .list-blog {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas para telas médias */
+  }
+}
+
+@media (max-width: 1200px) {
+  .list-blog {
+    grid-template-columns: 1fr; /* 1 coluna para telas pequenas */
+  }
+}
