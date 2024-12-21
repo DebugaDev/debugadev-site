@@ -1,0 +1,265 @@
+<section class="tutorial">
+  <h1>Algumas coisas sobre Java — I</h1>
+
+  <p>
+    Esses dias estava pensando aqui em como me organizar e melhorar minhas habilidades em desenvolvimento de software. Depois de pensar um pouco decidi começar do começo. Perdoe a péssima piada, mas escolhi começar com a base do Java, linguagem que decidi me aprofundar. Bom, vamos nessa, nesse texto separei alguns temas básicos que, se dominados, ajudam no dia a dia.
+  </p>
+
+  <h2>Escopo de variáveis</h2>
+  <p>
+    O escopo de uma variável pode durar enquanto a instância de um objeto durar, os atributos de uma classe possuem essa característica, exemplo:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        package teste;
+
+        public class Person &#123;
+          private int age;
+          private String name;
+
+          /*
+          * Demais atributos e métodos omitidos
+          */
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    A variável também pode ter seu ciclo de vida apenas durante a execução de um método, esse tipo é conhecido como variável local, exemplo:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        package teste;
+
+        public class Person &#123;
+          private int age;
+          private String name;
+
+          /*
+          * Demais atributos e métodos omitidos
+          */
+
+          public String sayHello() &#123;
+            String hello = "Hello";
+            return hello;
+          &#125;
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    Também é possível acessar variáveis carregadas na memória do programa, estas são declaradas como estáticas, exemplo:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        package teste;
+
+        public class QualqueClasse &#123;
+          static int x = 50;
+
+          /*
+          * Demais atributos e métodos omitidos
+          */
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    A seguir mostrarei exemplos de acesso a essas variáveis:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        public static void main(String[] args) &#123;
+          Person p = new Person();
+          System.out.println(p.age); //acesso através da instância da classe
+          System.out.println(Person.x); //acesso através da classe carregada em memória
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    Uma dica importante: por vezes duas variáveis podem possuir o mesmo nome em diferentes escopos, o que pode confundir um pouco as coisas.. Mas não significa que há algo errado, em diversas situações isso ocorre para deixar as coisas mais claras. Veja como exemplo o método abaixo, ele recebe como parâmetro um nome para que o atributo nome receba esse dado. Isso deve acontecer quando se trata de atributos “private”, que não podem ser acessados diretamente de fora da classe (mas isso é assunto para outro post).
+
+    O nome desse tipo de uso é conhecido como <strong>shadowing</strong> e a palavra reservada “this” faz com que a variável recebida como parâmetro seja atribuída ao atributo da classe.
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        package teste;
+
+        public class Person &#123;
+          private String name;
+
+          public void setName(String name) &#123;
+            this.name = name;
+          &#125;
+
+          public String getName() &#123;
+            return name;
+          &#125;
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2>Estrutura de classes</h2>
+  <p>
+    Uma classe java simples deve possuir os seguintes itens:
+  </p>
+
+  <h2>Pacote</h2>
+  <p>
+    Os pacotes servem para organizar todas as classes que um sistema possui, é correto afirmar que toda classe pertence a um pacote. Caso não haja um pacote declarado a classe faz parte do default package.
+  </p>
+
+  <h2>Classe</h2>
+  <p>
+    Neste item é onde se define atributos e comportamentos de um objeto no java. Sua declaração pode ser muito simples, algo como class Dog &#123;&#125;. (Os modificadores de acesso e notações merecem um post exclusivo :p).
+  </p>
+
+  <h2>Variáveis</h2>
+  <p>
+    A declaração de variáveis deve conter o seu tipo e seu nome. Existem alguns tipos de variáveis, que guardam conteúdo de maneira diferente, por exemplo algumas podem guardar valores durante a instância de um objeto, outras podem guardar valores compartilhados por todas as instâncias deste objeto (static) e também há a possibilidade de variáveis com espoco apenas durante a execução de um método.
+  </p>
+
+  <h2>Métodos</h2>
+  <p>
+    A declaração é um pouco diferente, contém o tipo de retorno seguido pelo nome do método e parênteses. Vale ressaltar que pode ou não haver parâmetros entre os parênteses.
+
+    A assinatura do método inclui somente o nome (que é um identificador) do método e os tipos dos parâmetros recebidos.
+
+    Já o tipo é um identificador do tipo de retorno que o método possui.
+
+    Métodos podem ser static também, e falaremos disso ao abordar modificadores de acesso.
+  </p>
+
+  <h2>Construtores</h2>
+  <p>
+    Uma classe pode possuir n construtores, quando escrevo n quero dizer 0 ou vários mesmo. O construtor só é utilizado no momento da criação de um objeto utilizando a palavra reservada new. O retorno do operador new é sempre uma referência para o objeto que acabou de ser criado.
+
+    A principal diferença entre um construtor e um método é que o construtor deve possuir o mesmo nome da classe e não possui retorno declarado dentro dele.
+
+    Pode-se declarar interfaces nos arquivos java, a declaração é bem simples bastando lembrar das seguintes características:
+
+    palavra reservada interface ao invés de class;
+
+    possui apenas a assinatura do método;
+
+    pode-se declarar constantes;
+  </p>
+  <ul>
+    <li>palavra reservada interface ao invés de class</li>
+    <li>possui apenas a assinatura do método</li>
+    <li>pode-se declarar constantes</li>
+  </ul>
+
+  <p>
+    Exemplo:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        package teste;
+
+        interface Animal &#123;
+          static final int x = 10;
+
+          void showName(String name);
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    A seguir um exemplo de uma classe java com as características citadas acima:
+  </p>
+  <pre>
+    <code class="language-java">
+      <p>
+        package br.com.futebol.modelo; // Pacote
+
+        import java.util.Calendar; // Importação de biblioteca Calendar
+
+        import javax.persistense.Entity;
+        import javax.persistense.GeneratedValue;
+        import javax.persistense.Id;
+
+        &#64;Entity(name = "jogos")
+        public class Jogo &#123;
+
+          // Variáveis
+          &#64;Id
+          &#64;GeneratedValue
+          private Long id;
+          private Long idTime;
+          private String times;
+          private String placar;
+          private String descricao;
+          private String escudos;
+          private Calendar data;
+          private String descricao;
+
+          // Construtor vazio
+          public Jogo() &#123;
+          &#125;
+
+          // Construtor com parâmetros
+          public Jogo(Long id, Long idTime, String times, String placar, String descricao, String escudos, Calendar data, String descricao;) &#123;
+            this.id = id;
+            this.idTime = idTime;
+            this.times = times;
+            this.placar = placar;
+            this.descricao = descricao;
+            this.escudos = escudos;
+            this.data = data;
+            this.descricao = descricao;
+          &#125;
+
+          // Métodos
+          public void setId(Long id) &#123;
+            this.id = id;
+          &#125;
+
+          public Long getId() &#123;
+            return id;
+          &#125;
+
+          public void setIdTime(Long idTime) &#123;
+            this.idTime = idTime;
+          &#125;
+
+          public Long getIdTime() &#123;
+            return idTime;
+          &#125;
+        &#125;
+      </p>
+    </code>
+  </pre>
+
+  <h2></h2>
+  <p>
+    Vale lembrar que um arquivo pode possuir mais de uma classe, porém, contudo, todavia existem alguma regras:
+  </p>
+  <ul>
+    <li>caso exista alguma interface/classe pública, o nome do arquivo deve ser o mesmo dessa interface/classe</li>
+    <li>pode haver apenas uma interface ou classe/pública neste arquivo</li>
+    <li>caso não exista interface/classe pública o nome do arquivo pode ser qualquer nome</li>
+  </ul>
+
+  <p>
+    <strong>Fonte: </strong><a href="https://docs.oracle.com./" target="_blank">docs.oracle</a>
+  </p>
+</section>
