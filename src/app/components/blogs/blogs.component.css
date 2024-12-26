@@ -17,7 +17,7 @@
   align-items: baseline;
 }
 
-@media (max-width: 1750px) {
+@media (max-width: 1550px) {
   .list-blog {
     grid-template-columns: repeat(2, 1fr); /* 2 colunas para telas médias */
   }
