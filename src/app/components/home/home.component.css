@@ -1,3 +1,118 @@
 .container {
   padding: 2rem;
 }
+
+.container h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  color: rgb(63, 105, 105);
+  margin-top: 1rem;
+}
+
+.video-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-horizontal:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-container {
+  width: auto;
+  height: auto;
+  padding: 0.2%;
+}
+
+.video-container iframe {
+  width: auto;
+  height: auto;
+  border: 4px solid rgb(63, 105, 105);
+  border-radius: 10px;
+}
+
+.info {
+  padding: 1rem;
+  text-align: left;
+  color: rgb(63, 105, 105);
+}
+
+.info h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.info h2 {
+  font-size: 1.5rem;
+}
+
+.apresentacao {
+  margin: 0;
+  text-align: center;
+  padding: 2rem;
+  width: auto;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(63, 105, 105);
+}
+
+.apresentacao p {
+  text-align: left;
+  font-size: 1.2rem;
+  margin: 0;
+  -webkit-hyphens: auto; /* Para navegadores baseados em WebKit (Chrome, Safari) */
+  -moz-hyphens: auto; /* Para Firefox */
+  -ms-hyphens: auto; /* Para Internet Explorer e Edge antigos */
+  hyphens: auto; /* Padrão */
+}
+
+.apresentacao h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(190, 197, 197);
+}
+
+.apresentacao h2 {
+  text-align: left;
+  font-weight: bold;
+  font-size:  1.2rem;
+  margin-top: 60px;
+  margin-bottom: 15px;
+}
+
+.apresentacao ul li {
+  margin: 0;
+  text-align: left;
+  width: auto;
+}
+
+.apresentacao a {
+  text-decoration: none;
+  color: rgb(233, 80, 80);
+}
+
+@media (max-width: 768px) {
+  .video-horizontal {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-container iframe {
+    width: 97%;
+    height: auto;
+  }
+
+  .info {
+    text-align: center;
+  }
+}
